@@ -1,0 +1,16 @@
+{
+	"preset": "jquery",
+	"disallowLeftStickedOperators": ["?", "+", "-", "/", "*", "=", "==", "===", "!=", "!==", ">", ">=", "<", "<="],
+	"disallowRightStickedOperators": ["?", "+", "/", "*", ":", "=", "==", "===", "!=", "!==", ">", ">=", "<", "<="],
+	"requireParenthesesAroundIIFE": true,
+	"disallowSpacesInsideArrayBrackets": true,
+	"requireSpacesInsideArrayBrackets": null,
+	"disallowImplicitTypeConversion": ["string"],
+	"disallowEmptyBlocks": true,
+	"disallowSpacesInsideParentheses": true,
+	"validateJSDoc": {
+		"checkParamNames": true,
+		"checkRedundantParams": true,
+		"requireParamTypes": true
+	}
+}

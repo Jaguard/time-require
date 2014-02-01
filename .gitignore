@@ -1,0 +1,6 @@
+# ignore Node submodules & temp
+node_modules
+target
+
+# ignore editor files
+.brackets.json
