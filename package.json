@@ -1,6 +1,6 @@
 	{
 	"name": "time-require",
-	"version": "0.0.1",
+	"version": "0.1.0",
 	"description": "Displays the execution time for Node.js modules loading; inspired by @sindresorhus 'time-grunt'",
 	"url": "https://bitbucket.org/jaguard/time-require",
 	"homepage": "https://bitbucket.org/jaguard/time-require",
@@ -15,7 +15,7 @@
 		"url": "git://bitbucket.org/jaguard/time-require"
 	},
 	"bugs": {
-		"url": "https://bitbucket.org/jaguard/experiments/issues"
+		"url": "https://bitbucket.org/jaguard/time-require/issues"
 	},
 	"main": "src/timeRequire.js",
 	"scripts": {
@@ -39,9 +39,9 @@
 		"gulp-if": "~0.0.5",
 		"gulp-match": "~0.0.2",
 		"gulp-jscs": "~0.4.0",
-		"gulp-docco": "0.0.3",
-		"gulp-markdown": "0.1.2",
-		"gulp-markdown-pdf": "0.2.0",
+		"gulp-docco": "~0.0.3",
+		"gulp-markdown": "~0.1.2",
+		"gulp-markdown-pdf": "~0.2.0",
 		"gulp-jsdoc": "~0.1.2",
 		"gulp-jasmine": "~0.2.0",
 		"jshint-stylish": "~0.1.5"
