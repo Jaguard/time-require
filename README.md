@@ -43,11 +43,11 @@ To **sort** the modules according to the loading time (longest on top) use the `
 
 ## Documentation
 
-Detailed API documentation can be found in ['doc'](doc/api.md) folder.
+Detailed API documentation can be found in ['doc'](https://bitbucket.org/jaguard/time-require/raw/master/doc/api.md) folder.
 
 ## Development
 
-Detailed development documentation can be found in ['doc'](doc/dev.md) folder.
+Detailed development documentation can be found in ['doc'](https://bitbucket.org/jaguard/time-require/raw/master/doc/dev.md) folder.
 
 ## License
 
@@ -55,5 +55,9 @@ MIT © [Jaguard OSS](http://oss.jaguard.com)
 
 ## Changelog
 
+- v0.1.0 (2014.04.10)
+	+ Added `.travis.yml` file for travis-ci.org build support
+	+ Published `time-require` module to [npm](https://www.npmjs.org/package/time-require)
+	* Include screenshoots as absolute links
 - v0.0.1 (2014.03.10)
 	+ Initial release
