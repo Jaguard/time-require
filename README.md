@@ -3,6 +3,8 @@
 > Displays the execution time for Node.js modules loading by hooking and tracing all `require()` calls.
 This module was inspired by [@sindresorhus](https://twitter.com/sindresorhus)'s [time-grunt](https://github.com/sindresorhus/time-grunt).
 
+**NOTE:** The project is hosted [@BitBucket](https://bitbucket.org/jaguard/time-require) but a mirror is available as well [@GitHub](https://github.com/jaguard/time-require).
+
 ## Project status
 - NPM version: [![NPM version](https://badge.fury.io/js/time-require.svg)](https://www.npmjs.org/package/time-require)
 - Travis-CI build: [![Build Status](http://img.shields.io/travis/jaguard/time-require.svg)](http://travis-ci.org/jaguard/time-require)
@@ -43,18 +45,23 @@ To **sort** the modules according to the loading time (longest on top) use the `
 
 ## Documentation
 
-Detailed API documentation can be found in ['doc'](https://bitbucket.org/jaguard/time-require/raw/master/doc/api.md) folder.
+Detailed API documentation can be found in ['doc'](https://bitbucket.org/jaguard/time-require/src/master/doc/api.md) folder.
 
 ## Development
 
-Detailed development documentation can be found in ['doc'](https://bitbucket.org/jaguard/time-require/raw/master/doc/dev.md) folder.
+Detailed development documentation can be found in ['doc'](https://bitbucket.org/jaguard/time-require/src/master/doc/dev.md) folder.
 
 ## License
 
-MIT © [Jaguard OSS](http://oss.jaguard.com)
+[MIT](https://bitbucket.org/jaguard/time-require/raw/master/LICENSE) &copy; [Jaguard OSS](http://oss.jaguard.com)
 
 ## Changelog
 
+- v0.1.1 (2014.04.10)
+	* gulpfile.js: add `notifyError` for stream error notification, add `seqTask` for sequential task control, fix `project.js` config replacing `lib/` with `src/`
+	* README.md: detail project hosting [@BitBucket](https://bitbucket.org/jaguard/time-require) & mirror [@GitHub](https://github.com/jaguard/time-require).
+	* LICENSE.md renamed to LICENSE to keep it as a simple text file
+	* package.json: set the [GitHub](https://github.com/jaguard/time-require) mirror as repository, add `run-sequence` for task order control, add `gulp-notify` for notification support
 - v0.1.0 (2014.04.10)
 	+ Added `.travis.yml` file for travis-ci.org build support
 	+ Published `time-require` module to [npm](https://www.npmjs.org/package/time-require)

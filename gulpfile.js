@@ -10,14 +10,16 @@
 
 var gulp = require("gulp"), //  http://gulpjs.com
 		$ = require("gulp-load-plugins")(), // lazy loading plugins: https://github.com/jackfranklin/gulp-load-plugins
+		sequence = require("run-sequence"), // specify run order https://github.com/OverZealous/run-sequence
 		gutil = require("gulp-util"), // https://github.com/gulpjs/gulp
 		log = gutil.log,
+		colors = gutil.colors,
 		// watching flag
 		watching = false,
 		// project config
 		/* jshint -W015 */
 		project = {
-			js: ["*.js", "lib/**/*.js", "test/**/*.js"], // include JavaScript files
+			js: ["*.js", "src/**/*.js", "test/**/*.js"], // include JavaScript files
 			specs: ["test/**/*.spec.js"], // include JavaScript files
 			md: ["*.md", "doc/*.md"], // include all markdown files
 			json: ["*.json", ".*rc"], // include all json and rc files
@@ -37,6 +39,22 @@ function cache(name) {
 }
 
 /**
+ * Add error notification for the specified stream using the type as a title prefix
+ */
+function notifyError(stream, type) {
+	stream.on("error", function(err) {
+		var title = type + " error",
+				message = err.message;
+		log(colors.red(title) + ": " + colors.yellow(message));
+		$.notify({
+			title: title,
+			message: message
+		});
+	});
+	return stream;
+}
+
+/**
  * Wrap src to automatically set the base to current working directory
  */
 function src(glob, opt) {
@@ -53,6 +71,17 @@ function task(name, deps, fn) {
 }
 
 /**
+ * Wrap gulp.task usage for sequencial execution for more expressive usage
+ */
+function seqTask(name) {
+	var tasks = Array.prototype.slice.call(arguments, 1);
+	task(name, function(cb) { // run the tasks in the specified order
+		tasks.push(cb);
+		sequence.apply(undefined, tasks);
+	});
+}
+
+/**
  * Wrap gulp.watch with file change reporting and watching flag setting for triggered tasks
  */
 function watch(glob, opt, fn) {
@@ -62,7 +91,7 @@ function watch(glob, opt, fn) {
 		// set watching flag
 		watching = true;
 		// log the change
-		log("The file " + gutil.colors.yellow(event.path) + " was " + gutil.colors.green(event.type));
+		log("The file " + colors.yellow(event.path) + " was " + colors.green(event.type));
 	});
 	return watcher;
 }
@@ -84,7 +113,7 @@ task("jshint", function() {
 		.pipe(cache("js")) // enable caching just when watching
 		.pipe($.jshint())
 		.pipe($.jshint.reporter("jshint-stylish"))
-		.pipe($.if(!watching, $.jshint.reporter("fail"))); // fail if not running under watcher
+		.pipe($.if(!watching, notifyError($.jshint.reporter("fail"), "JSHint"))); // fail if not running under watcher
 });
 
 // define "jscs" task for JavaScript code style constraints
@@ -92,7 +121,7 @@ task("jscs", function() {
 	log("Linting JavaScript files");
 	return src(project.js)
 		.pipe(cache("jscs")) // enable caching just when watching
-		.pipe($.jscs());
+		.pipe(notifyError($.jscs(), "JSCS"));
 });
 
 // define "jsonlint" task for JSON linting
@@ -144,7 +173,7 @@ task("test", function() {
 	log("Execute Jasmine tests/specs");
 	return src(project.specs)
 		.pipe(cache("specs")) // enable caching just when watching
-		.pipe($.jasmine({ verbose: true }));
+		.pipe(notifyError($.jasmine({ verbose: true }),"Jasmine"));
 });
 
 // define "watch" task to start watch/interactive development mode
@@ -158,7 +187,7 @@ task("watch", function() {
 // define top tasks & aliases
 task("lint", ["jsonlint", "jshint", "jscs"]);
 task("doc", ["jsdoc", "docco", "md"]); // TODO: "mdpdf" removed, pdf generation will block
-task("build", ["lint", "test", "doc"]);
+seqTask("build", "clean", "lint", "test", "doc"); // run sequentially
 
 // define default task
 task("default", ["build"]);
