@@ -1,8 +1,8 @@
 {
 	"name": "time-require",
-	"version": "0.1.1",
+	"version": "0.1.2",
 	"description": "Displays the execution time for Node.js modules loading; inspired by @sindresorhus 'time-grunt'",
-	"homepage": "https://bitbucket.org/jaguard/time-require",
+	"homepage": "https://github.com/jaguard/time-require",
 	"keywords": ["require", "measure", "time", "profile"],
 	"author": {
 		"name": "Jaguard OSS",
@@ -14,7 +14,7 @@
 		"url": "git://github.com/jaguard/time-require"
 	},
 	"bugs": {
-		"url": "https://bitbucket.org/jaguard/time-require/issues"
+		"url": "https://github.com/jaguard/time-require/issues"
 	},
 	"main": "src/timeRequire.js",
 	"scripts": {
@@ -24,8 +24,8 @@
 	"dependencies": {
 		"chalk": "^0.4.0",
 		"text-table": "^0.2.0",
-		"date-time": "^0.1.0",
-		"pretty-ms": "^0.1.0"
+		"date-time": "^0.1.1",
+		"pretty-ms": "^0.2.1"
 	},
 	"devDependencies": {
 		"gulp": "~3.6.0",
@@ -36,13 +36,13 @@
 		"gulp-cached": "~0.0.3",
 		"gulp-jshint": "~1.5.2",
 		"gulp-jsonlint": "~0.0.3",
-		"gulp-if": "~0.0.5",
+		"gulp-if": "~1.0.0",
 		"gulp-match": "~0.0.2",
 		"gulp-jscs": "~0.4.0",
-		"gulp-docco": "~0.0.3",
+		"gulp-docco": "~0.0.4",
+		"gulp-jsdoc": "~0.1.4",
 		"gulp-markdown": "~0.1.2",
 		"gulp-markdown-pdf": "~0.2.0",
-		"gulp-jsdoc": "~0.1.2",
 		"gulp-jasmine": "~0.2.0",
 		"gulp-notify": "~1.2.5",
 		"jshint-stylish": "~0.1.5"
@@ -50,7 +50,7 @@
 	"licenses": [
 		{
 			"type": "MIT",
-			"url": "https://bitbucket.org/jaguard/time-require/raw/master/LICENSE"
+			"url": "https://github.com/jaguard/time-require/raw/master/LICENSE"
 		}
 	],
 	"engines": {

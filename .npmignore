@@ -1,6 +1,8 @@
-# ignore Node submodules & temp
-node_modules
-target
+# ignore Node.js submodules & temp
+node_modules/
+target/
 
-# ignore editor files
-.brackets.json
+# ignore all development files (clone the project for full development support)
+test/
+.*
+gulpfile.js

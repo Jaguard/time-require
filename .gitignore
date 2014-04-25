@@ -1,4 +1,4 @@
-# ignore Node submodules & temp
+# ignore Node.js submodules & temp
 node_modules
 target
 

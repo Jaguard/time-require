@@ -1,6 +1,10 @@
 `time-require` changelog
 ======================
 
+- v0.1.2 (2014.04.20)
+	* README.md: add NPM downloads and GitHub release, add `gulpt` usage, remove BitBucket hosting/refs
+	* package.json: update dependencies
+	* .npmignore: remove all development-related files from NPM (clone the repo instead)
 - v0.1.1 (2014.04.10)
 	* gulpfile.js: add `notifyError` for stream error notification, add `seqTask` for sequential task control, fix `project.js` config replacing `lib/` with `src/`
 	* README.md: detail project hosting [@BitBucket](https://bitbucket.org/jaguard/time-require) & mirror [@GitHub](https://github.com/jaguard/time-require).

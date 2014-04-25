@@ -5,6 +5,7 @@
 	"requireParenthesesAroundIIFE": true,
 	"disallowSpacesInsideArrayBrackets": true,
 	"requireSpacesInsideArrayBrackets": null,
+	"validateLineBreaks": null,
 	"disallowImplicitTypeConversion": ["string"],
 	"disallowEmptyBlocks": true,
 	"disallowSpacesInsideParentheses": true,

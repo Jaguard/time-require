@@ -3,20 +3,20 @@
 > Displays the execution time for Node.js modules loading by hooking and tracing all `require()` calls.
 This module was inspired by [@sindresorhus](https://twitter.com/sindresorhus)'s [time-grunt](https://github.com/sindresorhus/time-grunt).
 
-**NOTE:** The project is hosted [@BitBucket](https://bitbucket.org/jaguard/time-require) but a mirror is available as well [@GitHub](https://github.com/jaguard/time-require).
-
 ## Project status
 - NPM version: [![NPM version](https://badge.fury.io/js/time-require.svg)](https://www.npmjs.org/package/time-require)
+- NPM downloads: [![NPM downloads](http://img.shields.io/npm/dm/time-require.svg)](https://www.npmjs.org/package/time-require)
+- GitHub release: [![GitHub Release](http://img.shields.io/github/release/jaguard/time-require.svg)](https://www.npmjs.org/package/time-require)
 - Travis-CI build: [![Build Status](http://img.shields.io/travis/jaguard/time-require.svg)](http://travis-ci.org/jaguard/time-require)
-- Drone.io build: [![Build Status](https://drone.io/github.com/jaguard/time-require/status.png)](https://drone.io/github.com/jaguard/time-require/latest)
+- Drone.io build: [![Build Status](https://drone.io/github.com/jaguard/time-require/status.png)](https://github.com/jaguard/time-require)
 - Dependencies: [![Dependencies status](https://david-dm.org/jaguard/time-require/status.svg?theme=shields.io)](https://david-dm.org/jaguard/time-require#info=dependencies)
 - Dev Dependencies: [![Dev Dependencies status](https://david-dm.org/jaguard/time-require/dev-status.svg?theme=shields.io)](https://david-dm.org/jaguard/time-require#info=devDependencies)
 
 Default usage (non-verbose) showing required modules in loaded order, above 1% treshold
-![default](https://bitbucket.org/jaguard/time-require/raw/master/doc/time_require_default.png)
+![default](doc/time_require_default.png)
 
 Verbose (all) & sorted usage showing all required modules in sorted order
-![verbose-sorted](https://bitbucket.org/jaguard/time-require/raw/master/doc/time_require_verbose_sorted.png)
+![verbose-sorted](doc/time_require_verbose_sorted.png)
 
 ## Install
 
@@ -28,13 +28,18 @@ npm install --save time-require
 
 ## Usage
 
-Embeded usage, generally as first `require()` call in your main module).
+1. Embeded usage, generally as first `require()` call in your main module.
 ```js
 require("time-require");
 ```
-External usage with `--require` preload supported by [Liftoff](https://github.com/tkellen/node-liftoff) driven CLI modules like [gulp.js](http://gulpjs.com/) or [Grunt-Next](https://github.com/gruntjs/grunt-next)
+2. External usage with `--require` preload supported by [Liftoff](https://github.com/tkellen/node-liftoff) driven CLI modules like [gulp.js](http://gulpjs.com/) or [Grunt-Next](https://github.com/gruntjs/grunt-next)
 ```
 gulp --require time-require --sorted
+```
+3. If you're using [gulp.js](http://gulpjs.com/), use instead [gulpt](https://github.com/jaguard/gulpt), a `gulp` CLI wrapper that automatically preload `time-require`.
+```
+npm install -g gulpt
+gulpt build --sorted
 ```
 
 ## Display layout
@@ -45,18 +50,22 @@ To **sort** the modules according to the loading time (longest on top) use the `
 
 ## Documentation
 
-Detailed API documentation can be found in ['doc'](https://bitbucket.org/jaguard/time-require/src/master/doc/api.md) folder.
+Detailed API documentation can be found in ['doc'](doc/api.md) folder.
 
 ## Development
 
-Detailed development documentation can be found in ['doc'](https://bitbucket.org/jaguard/time-require/src/master/doc/dev.md) folder.
+Detailed development documentation can be found in ['doc'](doc/dev.md) folder.
 
 ## License
 
-[MIT](https://bitbucket.org/jaguard/time-require/raw/master/LICENSE) &copy; [Jaguard OSS](http://oss.jaguard.com)
+[MIT](https://github.com/jaguard/time-require/raw/master/LICENSE) &copy; [Jaguard OSS](http://oss.jaguard.com)
 
 ## Changelog
 
+- v0.1.2 (2014.04.20)
+	* README.md: add NPM downloads and GitHub release, add `gulpt` usage, remove BitBucket hosting/refs
+	* package.json: update dependencies
+	* .npmignore: remove all development-related files from NPM (clone the repo instead)
 - v0.1.1 (2014.04.10)
 	* gulpfile.js: add `notifyError` for stream error notification, add `seqTask` for sequential task control, fix `project.js` config replacing `lib/` with `src/`
 	* README.md: detail project hosting [@BitBucket](https://bitbucket.org/jaguard/time-require) & mirror [@GitHub](https://github.com/jaguard/time-require).
