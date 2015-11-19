@@ -12,7 +12,7 @@ This module was inspired by [@sindresorhus](https://twitter.com/sindresorhus)'s 
 - Dependencies: [![Dependencies status](https://david-dm.org/jaguard/time-require/status.svg?theme=shields.io)](https://david-dm.org/jaguard/time-require#info=dependencies)
 - Dev Dependencies: [![Dev Dependencies status](https://david-dm.org/jaguard/time-require/dev-status.svg?theme=shields.io)](https://david-dm.org/jaguard/time-require#info=devDependencies)
 
-Default usage (non-verbose) showing required modules in loaded order, above 1% treshold
+Default usage (non-verbose) showing required modules in loaded order, above 1% threshold
 ![default](doc/time_require_default.png)
 
 Verbose (all) & sorted usage showing all required modules in sorted order
