@@ -24,8 +24,29 @@ var // setup vars
 		DEFAULT_COLUMNS = 80,
 		BAR_CHAR = process.platform === "win32" ? "■" : "▇",
 		sorted = hasArg("--sorted") || hasArg("--s"),
-		treshold = (hasArg("--verbose") || hasArg("--V")) ? 0.0: 0.01, // TODO - configure treshold using CLI ?
+		threshold = (hasArg("--verbose") || hasArg("--V")) ? 0.0: 0.01, // TODO - configure threshold using CLI ?
 		EXTRA_COLUMNS = sorted ? 24 : 20;
+
+/*
+ Public API.
+ */
+Object.defineProperty(exports, 'sorted', {
+	get: function () { return sorted; },
+	set: function (val) { sorted = val; }
+});
+Object.defineProperty(exports, 'threshold', {
+	get: function () { return threshold; },
+	set: function (val) { threshold = val; }
+});
+exports.logResults = logResults;
+
+/*
+ Implementation.
+ */
+
+// hook process exit to display the report at the end
+process.once("exit", logResults);
+
 
 function hasArg(arg) {
 	return process.argv.indexOf(arg) !== -1;
@@ -63,7 +84,7 @@ function formatTable(tableData, totalTime) {
 			validCount = 0,
 			longestRequire = tableData.reduce(function(acc, data) {
 				var avg = data.time / totalTime;
-				if (avg < treshold) {
+				if (avg < threshold) {
 					return acc;
 				}
 				validCount++;
@@ -106,7 +127,7 @@ function formatTable(tableData, totalTime) {
 		var avg = data.time / totalTime,
 				counterLabel, label, match;
 		// slect just data over the threshold
-		if (avg >= treshold) {
+		if (avg >= threshold) {
 			counterLabel = counter++;
 			// for sorted collumns show the order loading with padding
 			if (sorted) {
@@ -129,12 +150,11 @@ function formatTable(tableData, totalTime) {
 	});
 }
 
-// hook process exit to display the report at the end
-process.once("exit", function() {
+function logResults() {
 	var startTime = hook.hookedAt,
 			totalTime = Date.now() - startTime.getTime();
-	log("\n\n" + chalk.underline("Start time: " + chalk.yellow("(" + dateTime(startTime) + ")") + " [treshold=" + (treshold * 100) + "%" + (sorted ? ",sorted" : "") + "]"));
+	log("\n\n" + chalk.underline("Start time: " + chalk.yellow("(" + dateTime(startTime) + ")") + " [threshold=" + (threshold * 100) + "%" + (sorted ? ",sorted" : "") + "]"));
 	log(formatTable(requireData, totalTime));
 	log(chalk.bold.blue("Total require(): ") + chalk.yellow(requireData.length));
 	log(chalk.bold.blue("Total time: ") + chalk.yellow(prettyMs(totalTime)));
-});
+}

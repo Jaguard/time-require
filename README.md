@@ -28,7 +28,7 @@ npm install --save time-require
 
 ## Usage
 
-1. Embeded usage, generally as first `require()` call in your main module.
+1. Embedded usage, generally as first `require()` call in your main module.
 ```js
 require("time-require");
 ```

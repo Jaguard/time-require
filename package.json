@@ -1,6 +1,6 @@
 {
 	"name": "time-require",
-	"version": "0.1.2",
+	"version": "0.1.3",
 	"description": "Displays the execution time for Node.js modules loading; inspired by @sindresorhus 'time-grunt'",
 	"homepage": "https://github.com/jaguard/time-require",
 	"keywords": ["require", "measure", "time", "profile"],
